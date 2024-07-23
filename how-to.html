@@ -1,38 +1,119 @@
 <!DOCTYPE HTML>
 <html lang="en">
+
 <head>
-<meta charset=utf-8>
-<title>AWS S3</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset=utf-8>
+    <title>AWS Transcribe</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<header>
-<img class="logo" src="https://d1.awsstatic.com/uki-digital-marketing-content-directory/AWS%20logo.884800f1674e960b6134af7340ac45ab21d99682.png" alt="logo">
-<p class="pageTitle">Simple Storage Service (S3)</p>
-<nav class="hover-div">
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="use-cases.html">Use Cases</a></li>
-<li><a href="how-to.html">How To</a></li>
-</ul>
-</nav>
-</header>
-<section>
-<h2>Getting Started</h2>
-<p>Amazon Simple Storage Service (Amazon S3) is an object storage service offering industry-leading scalability, data availability, security, and performance. Millions of customers of all sizes and industries store, manage, analyze, and protect any amount of data for virtually any use case, such as data lakes, cloud-native applications, and mobile apps. With cost-effective storage classes and easy-to-use management features, you can optimize costs, organize and analyze data, and configure fine-tuned access controls to meet specific business and compliance requirements.
-</p>
-<img src="s3-how-to.png" alt="S3">
-<h2>Using S3</h2>
-<ol>
-    <li>This step is this</li>
-    <li>This do this step</li>
-    <li>For this field, enter that</li>
-    <li>Set the security this way</li>
-    <li>Test by clicking on there.</li>
-</ol>
-</section>
-<footer>
-<p>&copy;Amazon Web Services</p>
-</footer>
+    <header>
+        <img class="logo"
+            src="https://d1.awsstatic.com/uki-digital-marketing-content-directory/AWS%20logo.884800f1674e960b6134af7340ac45ab21d99682.png"
+            alt="logo">
+        <p class="pageTitle">Simple Storage Service (S3)</p>
+        <nav class="hover-div">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="use-cases.html">Use Cases</a></li>
+                <li><a href="how-to.html">How To</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <h2>Getting Started</h2>
+        <p>Amazon Transcribe is an automatic speech recognition service that makes it easy to add speech to text
+            capabilities to any application. Transcribe's features enable you to ingest audio input, produce easy to
+            read and review transcripts, improve accuracy with customization, and filter content to ensure customer
+            privacy.
+        </p>
+
+        <p>
+            Below is an image that describes how Transcribe works: 
+        </p>
+        <br />
+        <br />
+        <img src="ML-13784_Intro.png" alt="transcribe">
+
+        <h2>How Transcribe Works</h2>
+        <h3>Streaming Mode</h3> 
+        In streaming mode, Amazon Transcribe transcribes audio in real-time as it's being captured or streamed. This mode is useful for applications that require low-latency transcription, such as live captioning, speech-to-text conversion, or voice-controlled interfaces.
+
+        <h4>Here's how it works:</h4>
+
+    <ol>
+        <li>Your application sends an audio stream to the Amazon Transcribe Streaming API.</li>
+        <li>Transcribe processes the audio stream in real-time, transcribing the speech as it's received.</li>
+        <li>Transcribe sends the transcribed text back to your application in chunks, with minimal delay.</li>
+        <li>Your application can process the transcribed text as it's received, enabling real-time capabilities.</li>
+    </ol>
+
+<p>Streaming mode is more complex to set up than batch mode, as it requires your application to handle the streaming audio and manage the bi-directional communication with the Transcribe Streaming API.</p>
+
+<h3>Batch Mode</h3>
+
+<h4>In batch mode, Amazon Transcribe transcribes pre-recorded audio files that are stored in an Amazon S3 bucket or available at a specified URL.</h4>
+
+<h4>Here's how it works:</h4>
+
+    <ol>
+        <li>Your application submits a transcription job to Amazon Transcribe, specifying the location of the audio file(s) to be transcribed.</li>
+        <li>Transcribe retrieves the audio file(s) and transcribes the audio in an asynchronous process.</li>
+        <li>Once the transcription job is complete, Transcribe stores the transcribed text and any additional output (e.g., confidence scores, speaker labels) in the specified output location.</li>
+        <li>Your application can then retrieve and process the transcribed text and output data.</li>
+    </ol>
+
+<p>Batch mode is simpler to set up than streaming mode, as it doesn't require real-time processing or bi-directional communication. However, it introduces a delay between when the audio is submitted and when the transcription is available, making it less suitable for low-latency applications.</p>
+<p>Both streaming mode and batch mode offer various configuration options, such as choosing the output format, enabling speaker diarization, and setting data access controls. The mode you choose will depend on the specific requirements of your application and the latency constraints you need to meet.</p>
+        <h2>Using Transcribe</h2>
+        <ol>
+            <li> Access the Amazon Transcribe Console
+                <ul>
+                    <li>Once you've logged into your AWS account, navigate to the Amazon Transcribe console. You can find this by typing "Transcribe" into the search bar at the top of the AWS Management Console.
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                Create a New Transcription Job
+                <ul>
+                    <li>In the Transcribe console, click on the "Create Transcription Job" button. </li>
+                    <li>You'll be prompted to provide some details about your transcription job, such as the name of the job, the language of the audio file, and the location of the audio file (either an S3 bucket or a URL).</li>
+
+                </ul>
+            </li>
+
+            <li>Configure Transcription Settings</li>
+            <ul>
+                <li>On the "Configure Transcription Settings" page, you can customize various options for your transcription job, such as the output format (e.g., JSON, SRT), whether to include speaker diarization, and more.</li>
+            </ul>
+
+            <li>Review and Submit</li>
+            <ul>
+                <li>Review the details of your transcription job, and if everything looks correct, click "Submit" to start the transcription process.</li>
+            </ul>
+
+            <li>Monitor Transcription Progress</li>
+            <ul>
+                <li>Once your transcription job has been submitted, you can monitor its progress in the Transcribe console. The job will move through various stages (e.g., Queued, In Progress, Completed) until it's finished.</li>
+            </ul>
+
+            <li>Access Transcription Output</li>
+            <ul>
+                <li>When the transcription job is complete, you can access the transcribed text and any additional output (e.g., confidence scores, speaker labels) from the location you specified in the job settings.</li>
+            </ul>
+
+            <li>Review and Use Transcription</li>
+            <ul>
+                <li>Review the transcribed text for accuracy, and use it as needed in your application or workflow.</li>
+            </ul>
+
+        </ol>
+    </section>
+    <footer>
+        <p>&copy;Amazon Web Services</p>
+    </footer>
 </body>
-</html> 
+
+</html>
